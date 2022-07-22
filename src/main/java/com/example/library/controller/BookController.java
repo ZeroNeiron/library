@@ -1,8 +1,5 @@
 package com.example.library.controller;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.validation.Valid;
 import com.example.library.dto.request.BookRequestDto;
 import com.example.library.dto.response.BookResponseDto;
 import com.example.library.mapper.request.BookRequestMapper;
@@ -10,6 +7,9 @@ import com.example.library.mapper.response.BookResponseMapper;
 import com.example.library.model.Book;
 import com.example.library.service.AuthorService;
 import com.example.library.service.BookService;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,7 +65,8 @@ public class BookController {
 
     @GetMapping("/most-published")
     public BookResponseDto getMostPublishedBookByAuthorName(@RequestParam String authorName) {
-        return bookResponseMapper.mapToDto(bookService.getMostPublishedBookByAuthorName(authorName));
+        return bookResponseMapper.mapToDto(
+                bookService.getMostPublishedBookByAuthorName(authorName));
     }
 
     @GetMapping("/most-success-rate")
@@ -76,14 +77,16 @@ public class BookController {
     }
 
     @GetMapping("/most-published/by-part-name")
-    public List<BookResponseDto> getMostPublishedBooksByAuthorPartName(@RequestParam String authorPartName) {
+    public List<BookResponseDto> getMostPublishedBooksByAuthorPartName(
+            @RequestParam String authorPartName) {
         return bookService.getMostPublishedBooksByAuthorPartName(authorPartName).stream()
                 .map(bookResponseMapper::mapToDto)
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/most-selling/by-part-name")
-    public List<BookResponseDto> getMostSellingBooksByAuthorPartName(@RequestParam String authorPartName) {
+    public List<BookResponseDto> getMostSellingBooksByAuthorPartName(
+            @RequestParam String authorPartName) {
         return bookService.getMostSellingBooksByAuthorPartName(authorPartName).stream()
                 .map(bookResponseMapper::mapToDto)
                 .collect(Collectors.toList());

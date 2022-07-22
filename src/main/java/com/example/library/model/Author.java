@@ -1,7 +1,6 @@
 package com.example.library.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -67,12 +66,12 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", authorName='" + authorName + '\'' +
-                ", birthDate=" + birthDate +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Author{"
+                + "id=" + id
+                + ", authorName='" + authorName + '\''
+                + ", birthDate=" + birthDate
+                + ", phone='" + phone + '\''
+                + ", email='" + email + '\''
+                + '}';
     }
 }
